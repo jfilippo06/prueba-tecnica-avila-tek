@@ -5,8 +5,9 @@ const loginController = (req, res) => {
 const registerController = (req, res) => {
     try {
         const {email, userName, password} = req.body
-    } catch (error) {
         
+    } catch (error) {
+        res.status(error.code).json(error.message)
     }
 
 }
