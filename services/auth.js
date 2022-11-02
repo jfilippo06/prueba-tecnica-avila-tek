@@ -1,8 +1,11 @@
 const bcrypt = require('bcrypt')
 const auth = require('../config/auth')
-const { registerUser } = require('../DAL/auth')
+const { registerUser, loginUser } = require('../DAL/auth')
 
-const loginService = async () => {}
+const loginService = async (email, password) => {
+    const data = await loginUser(email, password)
+    return data
+}
 
 const registerService = async (email, userName, password) => {
     const salt = await bcrypt.genSalt(Number.parseInt(auth.rounds))

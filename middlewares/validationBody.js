@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 
 const bodyLogin = [
-    body("userName", "Introduzca un nombre de usuario valido").trim().notEmpty().escape(),
+    body("email", "Enter a valid email!").trim().isEmail().normalizeEmail(),
     body("password", "Introduzca un minimo de 5 caracteres").trim().isLength({ min: 5 }).escape(),
 ];
 
