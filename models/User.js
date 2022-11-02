@@ -1,21 +1,23 @@
-'use strict';
-module.exports = mongoose => {
-  const newSchema = new mongoose.Schema({
-    userName: {
-      type: String
-    },
+const moongose = require('mongoose')
+const {Schema} = moongose
+
+const userSchema = new Schema({
     email: {
-      type: String
+        type: String,
+        lowercase: true,
+        required: true,
+        unique: true,
+        index: {unique: true}
+    },
+    userName: {
+        type: String,
+        lowercase: true,
+        required: true
     },
     password: {
-      type: String
+        type: String,
+        required: true
     }
-  }, {
-    timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
-    }
-  });
-  const User = mongoose.model('User', newSchema);
-  return User;
-};
+})
+
+module.exports = moongose.model('User', userSchema)
