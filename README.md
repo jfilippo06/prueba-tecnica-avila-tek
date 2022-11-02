@@ -10,9 +10,9 @@ npm install
 
 3) Migrations:
 ``` bash
-npx sequelize-cli db:migrate
+npx mongoosejs-cli db:migrate
 ```
 
 4) Seeders:
 ``` bash
-npx sequelize-cli db:seed:all
+npx mongoosejs-cli db:seed:all
