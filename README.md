@@ -1,18 +1,12 @@
-# 
+# PRUEBA TECNICA AVILA TEK
 
-1) Create database
-2) Copy .env.example to .env and fill with database credentials.
+1) Copiar las variables de entorno del archivo .env.example a un archivo .env
+2) Ejecutar la Base de datos mongoDB local con el comando mongod en la terminal
 
-To install dependencies, run
-``` bash
+3) Instalar las dependencias
 npm install
-```
 
-3) Migrations:
-``` bash
-npx mongoosejs-cli db:migrate
-```
-
-4) Seeders:
-``` bash
-npx mongoosejs-cli db:seed:all
+4)Ejecutar el sevidor:
+Lista de comandos:
+npm start
+npm run dev
