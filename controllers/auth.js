@@ -19,7 +19,7 @@ const registerController = async (req, res) => {
     try {
         const {email, userName, password} = req.body
         const data = await registerService(email, userName,password)
-        res.status(201).json(data)
+        res.render('register')
     } catch (error) {
         res.status(error.code).json(error.message)
     }
