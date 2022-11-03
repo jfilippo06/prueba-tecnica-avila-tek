@@ -4,10 +4,29 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('./database/db')
+const session = require('express-session')
+const passport = require('passport')
+const User = require('./models/User')
 
 const indexRouter = require('./routes/index');
 
 const app = express();
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  name: process.env.NAME,
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.serializeUser((user,done) => done(null, {id: user._id, userName: user.userName}))
+passport.deserializeUser(async (user,done) => {
+    const userBD = await User.findById(user.id)
+    return done(null, {id: userBD._id, userName: userBD.userName})
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

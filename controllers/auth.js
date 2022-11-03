@@ -1,10 +1,14 @@
+const AppError = require("../errors/appErrors")
 const { registerService, loginService } = require("../services/auth")
 
 const loginController = async (req, res) => {
     try {
         const {email, password} = req.body
         const data = await loginService(email, password)
-        res.status(200).json(data)
+        req.login(data, (err,) => {
+            if (err) throw new AppError('Error al crear la sesion', 403)
+            res.redirect('/home')
+        })
     } catch (error) {
         res.status(error.code).json(error.message)
     }
