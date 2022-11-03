@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post('/login', bodyLogin, validationResult, asyncHandler(loginController))
 router.post('/register', bodyRegister, validationResult, asyncHandler(registerController))
-router.post('/logout', asyncHandler(logoutController))
+router.get('/logout', asyncHandler(logoutController))
 
 module.exports = router;

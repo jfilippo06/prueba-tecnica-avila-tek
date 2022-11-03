@@ -24,7 +24,10 @@ const registerController = async (req, res) => {
     }
 }
 
-const logoutController = (req, res) => {}
+const logoutController = async (req, res) => {
+    req.logout(()=>{})
+    res.redirect('/')
+}
 
 module.exports = {
     loginController,
