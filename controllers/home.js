@@ -7,7 +7,8 @@ const register = (req,res) => {
 }
 
 const home = (req,res) => {
-    res.render('home')
+    user = req.user
+    res.render('home', {user});
 }
 
 module.exports = {

@@ -11,7 +11,7 @@ const loginUser = async (email, password) => {
 
 const registerUser = async (email, userName, hash) => {
     const user = await User.findOne({email})
-    if (user) throw new AppError('Usuario ya existe', 200);
+    if (user) throw new AppError('Email ya existe', 200);
     const data = new User({email, userName, password:hash})
     await data.save()
     return data
