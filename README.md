@@ -10,3 +10,7 @@ npm install
 Lista de comandos:
 npm start
 npm run dev
+
+5) Entrar a http://localhost:3000/
+
+Opcional: Probar las rutas con Postman o Thunder
