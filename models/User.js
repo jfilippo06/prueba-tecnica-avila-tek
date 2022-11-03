@@ -1,5 +1,6 @@
 const moongose = require('mongoose')
 const {Schema} = moongose
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const userSchema = new Schema({
     email: {
@@ -19,5 +20,7 @@ const userSchema = new Schema({
         required: true
     }
 })
+
+userSchema.plugin(mongoosePaginate)
 
 module.exports = moongose.model('User', userSchema)

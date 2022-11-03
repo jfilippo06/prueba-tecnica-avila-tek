@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
-const findAndCountAllUsers = async (limit,offset) =>  {
-    const data = await User
+const findAndCountAllUsers = async (options) =>  {
+    const data = await User.paginate({}, options)
     return data
 }
 
