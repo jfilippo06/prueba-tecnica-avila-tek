@@ -13,5 +13,8 @@
       <input type="text" name="password" id="" placeholder="Password" required>
       <input type="submit" value="Login">
     </form>
+    <% messages.forEach(function(message){ %>
+      <p><%- message.msg %></p>
+    <% }); %>
   </body>
 </html>

@@ -10,7 +10,8 @@ const loginController = async (req, res) => {
             res.redirect('/home')
         })
     } catch (error) {
-        res.status(error.code).json(error.message)
+        req.flash('messages', {msg:error.message})
+        res.redirect('/')
     }
 }
 

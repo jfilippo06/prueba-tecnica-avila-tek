@@ -7,6 +7,7 @@ require('./database/db')
 const session = require('express-session')
 const passport = require('passport')
 const User = require('./models/User')
+const flash = require('connect-flash')
 
 const indexRouter = require('./routes/index');
 
@@ -18,6 +19,8 @@ app.use(session({
   saveUninitialized: false,
   name: process.env.NAME,
 }))
+
+app.use(flash())
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -37,6 +40,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req,res,next) => {
+  res.locals.messages = req.flash('messages')
+  next()
+})
 
 app.use('/', indexRouter);
 
